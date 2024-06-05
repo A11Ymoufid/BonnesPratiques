@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- **********CSS*********** -->
+    <link rel="stylesheet" href="./assets/css/style.css ">
+
+    <!-- **********FAVICON*********** -->
+
+
+    <title>Document</title>
+</head>
+
+
+<!-- ***********BODY*********** -->
+
+<body>
+    <!-- ***********HEADER********** -->
+    <header role="banner">
+
+        <!-- **********NAVIGATION********** -->
+        <!-- <nav role="navigation">
+            <ul>
+                <li><a href="#">test</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav> -->
+
+    </header>
+
+
+    <!-- ***********MAIN ***********-->
+    <main role="main">
+        <div class="wrapper">
+            <h1>Checklist accessibilité</h1>
+            <p>Liste de critères à vérifier pour améliorer l'accessibilité selon le RGAA 4.1.2</p>
+            <div class="panel">
+                <h2>Structure et balisage général</h2>
+                <ul class="checklist">
+                    <li class="checklist-item AA">
+                        <div class="checklist-item-label">La <strong>langue de la page</strong> est spécifiée sur la
+                            balise html avec l’attribut <code>lang</code> (ce même attribut est également
+                            utilisé à l’intérieur de la page sur les balises englobant des textes dans une autre langue
+                            afin de signaler un changement de langue)</div>
+                        <xmp>
+                            <html lang="fr-FR">
+                            ...
+                            <a href="#">Notre sélection du <span lang="en-US">Black Friday</span></a>
+                            ...
+
+                            </html>
+                        </xmp>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">La <strong>balise <code>title</code></strong> est correctement
+                            renseignée avec un intitulé pertinent qui reflete le contenu ou la fonction de la page</div>
+                        <div class="text-small">Pour les pages d'archives WP la pagination est intégrée au
+                            <code>title</code> (ex&nbsp;: Tous les articles - Page 1 sur 3)
+                        </div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Le <strong>html est bien structuré avec des attributs
+                                <code>role</code></strong> sur l'entête, les navigations, la zone de contenu principale,
+                            le footer et le moteur de recherche. Seul le rôle navigation peut être présent plusieurs
+                            fois dans la page, les autres sont uniques.</div>
+                        <div class="text-small">Extension <a href="http://matatk.agrip.org.uk/landmarks/"
+                                target="_blank">Landmarks</a> pour tester la bonne implémentation.</div>
+                        <xmp>
+                            <header role="banner"></header>
+                            <nav role="navigation"></nav>
+                            <div role="search">
+                                <form>...</form>
+                            </div>
+                            <main role="main"></main>
+                            <footer role="contentinfo"></footer>
+                        </xmp>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les <strong>titres</strong> de la page sont bien
+                            <strong>hiérarchisés</strong> :<ul>
+                                <li>un seul <code>h1</code></li>
+                                <li>bonne imbrication des <code>h2</code>, <code>h3</code>, etc : dans l'ordre et sans
+                                    omission d'un niveau.</li>
+                            </ul>
+                        </div>
+                        <div class="text-small">Extension HeadingsMap (<a
+                                href="https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi"
+                                target="blank">Chrome</a> et <a
+                                href="https://addons.mozilla.org/en-US/firefox/addon/headingsmap/"
+                                target="_blank">Firefox</a>) pour vérifier la bonne hiérarchisation.</div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les <strong>attributs <code>src</code></strong> des images
+                            sont tous remplis</div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les <strong>balises <code>a</code></strong> contiennent un
+                            texte permettant d’identifier le contenu de la page vers laquelle ils renvoient</div>
+                        <xmp class="not-allowed">Pour en savoir plus sur nos CVG : <a href="/">cliquez ici</a></xmp>
+                        <xmp><a href="/">Consulter nos CGV</a></xmp>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Il n’est pas utilisé de balises standards (p, div, span) pour
+                            des éléments censés être <strong>structurés</strong> (listes, titres).</div>
+                        <xmp class="not-allowed">
+                            <p class="h1">Mon titre</p>
+                        </xmp>
+                        <xmp>
+                            <h1 class="h1">Mon titre</h1>
+                        </xmp>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les pages du site sont <strong>conformes w3c</strong></div>
+                        <div class="text-small">Test de validité w3C : <a href="http://validator.w3.org/"
+                                target="_blank">http://validator.w3.org/</a></div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label"><strong>Aucun élément</strong> de type <code>p</code>,
+                            <code>a</code>, <code>li</code>, <code>button</code>, <code>legend</code>,
+                            <code>caption</code>, <code>figcaption</code>, <code>quote</code> <strong>n'est
+                                vide</strong>.
+                        </div>
+                        <div class="text-small">S’il y a besoin d’un bouton avec un icon uniquement, ajouter tout de
+                            même un texte à l’intérieur qui sera masqué à l’écran. Pour masquer ce type d'éléments ne
+                            pas utiliser d'astuces du type "display: none" ou "visibility: hidden" (qui empêchent la
+                            lecture par les lecteurs d'écrans). Exemple : <a
+                                href="https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034"
+                                target="_blank">https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034</a>
+                        </div>
+                        <xmp><button class="icon-loupe"><span class="hide-screens">Rechercher</span></button></xmp>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Si une <strong>description</strong> est associée à un bouton
+                            ou tout autre élément, elle doit être liée à l'élément en question via l'attribut
+                            <code>aria-describedby</code>
+                        </div>
+                        <xmp><button aria-describedby="descriptionRetour">Retour</button>
+                            <div id="descriptionRetour">Le retour annulera toutes vos modifications non enregistrées.
+                            </div>
+                        </xmp>
+                    </li>
+                </ul>
+                <div class="sep"></div>
+                <h2>Formulaires</h2>
+                <ul class="checklist">
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les éléments de type <code>form</code> ont tous un
+                            <strong>bouton de validation</strong> (<code>button</code> ou <code>input</code> de type
+                            submit) avec un libellé pertinent
+                        </div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les <code>labels</code> sont tous <strong>associés à un
+                                champ</strong> de formulaire (attribut <code>for</code>)</div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>champs</strong> de formulaire ont tous un
+                            <strong>label associé :</strong>
+                        </div>
+                        <ul>
+                            <li>Soit avec un <code>id</code> correspondant à l’attribut <code>for</code> d’un label
+                                <xmp><label for="recherche">Rechercher</label>
+                                    <input type="search" id="recherche" />
+                                </xmp>
+                            </li>
+                            <li>Soit avec un attribut <code>aria-label</code> (si l’on souhaite se passer de label
+                                visible par exemple et utiliser un placeholder à la place)
+                                <xmp><input type="search" aria-label="Rechercher" placeholder="Rechercher" /></xmp>
+                                <p class="text-small"><code>aria-label</code> peut être utilisé uniquement si une
+                                    alternative visuelle comporte la même valeur (<code>label</code> ou
+                                    <code>placeholder</code>)
+                                </p>
+                            </li>
+                            <li>Soit avec un attribut <code>aria-labelledby</code> correspondant à l'<code>id</code> du
+                                label
+                                <xmp>
+                                    <p id="label-recherche">Rechercher</p>
+                                    <input type="search" aria-labelledby="label-recherche" />
+                                </xmp>
+                            </li>
+                            <li>Soit avec un attribut <code>title</code>
+                                <xmp><input type="search" title="Rechercher" /></xmp>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>listes de boutons radio et checkbox</strong>
+                            possédant un "sur-label" sont wrappées dans un <code>fieldset</code> avec un élément
+                            <code>legend</code> pertinent
+                        </div>
+                        <xmp>
+                            <fieldset>
+                                <legend>Civilité</legend>
+                                <input type="radio" name="civilite" id="civilite_monsieur" />
+                                <label for="civilite_monsieur">Monsieur</label>
+                                <input type="radio" name="civilite" id="civilite_madame" />
+                                <label for=" civilite_madame ">Madame</label>
+                            </fieldset>
+                        </xmp>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les autres types de <strong>champs</strong> nécessitant d'être
+                            <strong>groupés</strong> (par exemple 3 champs jour/mois/année) doivent également être
+                            wrappés dans un <code>fieldset</code>avec un élément <code>legend</code> pertinent
+                        </div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>champs obligatoires</strong> sont identifiables :
+                        </div>
+                        <ul>
+                            <li>Soit avec une indication dans le <code>label</code>
+                                <xmp><label for="nom">Nom (champ obligatoire)</label>
+                                    <input type="text" id="nom" />
+                                </xmp>
+                            </li>
+                            <li>Soit avec une aide visuelle et un texte explicatif situé avant le formulaire <xmp>
+                                    <p>Les champs obligatoires sont précédés d'une étoile *</p>
+                                    <label for="nom">Nom *</label>
+                                    <input type="text" id="nom" />
+                                </xmp>
+                                <xmp class="not-allowed"><label for="nom">Nom *</label>
+                                    <input type="text" id="nom" />
+                                    <p>Les champs obligatoires sont précédés d'une étoile *</p>
+                                </xmp>
+                            </li>
+                            <li>Soit avec un attribut <code>required</code> ou <code>aria-required</code> doublé d'une
+                                aide visuelle (cf. point précédent)</li>
+                        </ul>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>formats attendus</strong> sont clairement précisés
+                            :</div>
+                        <ul>
+                            <li>Soit dans le <code>label</code>
+                                <xmp><label for="date">Date (jj/mm/aaaa)</label>
+                                    <input type="text" id="date" />
+                                </xmp>
+                            </li>
+                            <li>Soit dans un attribut <code>title</code>
+                                <xmp><label for="date">Date</label>
+                                    <input type="text" id="date" title="jj/mm/aaaa" />
+                                </xmp>
+                            </li>
+                            <li>Soit à l'aide d'un attribut <code>aria-labelledby</code> ou
+                                <code>aria-describedby</code>
+                                <xmp><label for="date">Date</label>
+                                    <input type="text" id="date" aria-describedby="help-format-date" />
+                                    <span id="help-format-date">jj/mm/aaaa</span>
+                                </xmp>
+                                <xmp class="not-allowed"><label for="date">Date</label>
+                                    <input type="text" id="date" />
+                                    <span>jj/mm/aaaa</span>
+                                </xmp>
+                                <p class="text-small"><code>aria-labelledby</code> se substitue au label, alors que
+                                    <code>aria-describedby</code> vient en complément. Dans les 2 cas ils doivent avoir
+                                    comme valeur l'<code>id</code> de la balise contenant le texte qui doit être utilisé
+                                    comme aide à la saisie.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les <strong>erreurs de formulaire</strong> doivent être
+                            identifiées :</div>
+                        <ul>
+                            <li>Soit dans le <code>label</code> des champs invalides</li>
+                            <li>Soit avec un attribut <code>aria-invalid</code> dans les champs invalides</li>
+                            <li>Soit via un attribut <code>aria-describedby</code> sur les champs invalides</li>
+                            <li>Soit dans un texte situé avant les champs et listant toutes les erreurs</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="sep"></div>
+                <h2>Tableaux</h2>
+                <ul class="checklist">
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>tableaux de données</strong> possèdent une
+                            <strong>légende pertinente</strong> (balise <code>caption</code>)
+                        </div>
+                        <xmp>
+                            <table>
+                                <caption>Tarifs 2019</caption>
+                                <tr>...</tr>
+                            </table>
+                        </xmp>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>entêtes</strong> de tableaux (colonnes et lignes)
+                            sont bien définies via des balises <code>th</code></div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>cellules</strong> de tableaux de données sont
+                            <strong>associées à des entêtes</strong>:
+                            <ul>
+                                <li>si les entêtes s'appliquent à toute la ligne ou colonne, les balises <code>th</code>
+                                    possèdent un attribut <code>scope="col"</code> (entête de colonne) ou
+                                    <code>scope="row"</code> (entête de ligne)
+                                </li>
+                                <li>si les entêtes ne s'appliquent pas à toute la ligne ou colonne, les <code>th</code>
+                                    possèdent un <code>id</code> et les <code>td</code> un attribut <code>headers</code>
+                                    contenant la liste de toutes les entêtes auxquelles ils sont associés</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>tableaux de mise en forme</strong> possèdent un
+                            attribut <code>role="presentation"</code> et sont dépourvus de balises propres aux tableaux
+                            de données (<code>caption</code>, <code>th</code>, <code>thead</code>, etc), et d'attributs
+                            de type <code>scope</code> ou <code>headers</code> </div>
+                        <div class="text-small">Un tableau de mise en forme est une balise <code>table</code> dont
+                            l'usage d'origine (l'affichage de données) est détourné en vue de mettre en page des
+                            éléments</div>
+                    </li>
+                    <div class="sep"></div>
+                    <h2>Navigation</h2>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">La page comporte au moins un lien d'évitement (<strong>lien
+                                d'accès rapide au contenu principal</strong>). Il est présent tout en haut du DOM. Il
+                            peut être présent en permanence ou être masqué à l'écran et affiché au focus pour les
+                            navigations au clavier.</div>
+                        <div class="text-small">Pour masquer les liens d'évitement ne pas utiliser d'astuces du type
+                            "display: none" ou "visibility: hidden".<br />Exemple : <a
+                                href="https://codepen.io/access42/pen/VVpWxJ"
+                                target="_blank">https://codepen.io/access42/pen/VVpWxJ</a></div>
+                    </li>
+                    <!--<li class="checklist-item"><div class="checklist-item-label">La <strong>page active</strong> est d'un menu est <strong>visuellement identifiable</strong>, même pour les déficients visuels (solution idéale : background + gras/souligné + title)</div></li>-->
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Une <strong>alternative non visuelle</strong> est proposée
+                            pour identifier <strong>la page active</strong> dans les menus :
+                            <ul>
+                                <li>avec un attribut <code>title</code> sur le lien de la page active
+                                    <xmp><a href="/" title="Accueil - Page active">Accueil</a></xmp>
+                                </li>
+                                <li>avec un texte masqué dans le libellé du lien de la page active
+                                    <xmp><a href="/" title="Accueil">Accueil<span class="sr-only"> Page
+                                                active</span></a></xmp>
+                                    <div class="text-small">Attention aux propriétés utilisées pour cacher à l'écran
+                                        seulement ("display:none" par exemple masque aussi l'élément sur les lecteurs
+                                        d'écran. Exemple de css pour masquer à l'écran et conserver une visibilité par
+                                        les lecteurs d'écrans : <a
+                                            href="https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034"
+                                            target="_blank">https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034</a>)
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Si l'<strong>outline</strong> d'un élément est supprimé, il
+                            est remplacé par un autre style permettant de visualiser le focus</div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Il est possible de <strong>naviguer sur le site uniquement
+                                avec le clavier</strong> : l'ordre des tabulations est cohérent et on peut toujours
+                            revenir en arrière ou avancer (pas de piège au clavier qui nous bloque).</div>
+                        <div class="text-small">Tester en utilisant uniquement <code>Tab</code> pour avancer et
+                            <code>Shift + Tab</code> pour revenir en arrière.<br />Outil pour mieux visualiser le focus
+                            : <a href="http://www.pauljadam.com/bookmarklets/focus.html" target="_blank">Bookmarlet</a>
+                            (déplacer le lien dans la barre de favoris, se rendre sur le site à tester et cliquer sur le
+                            favoris pour lancer le js).<br />Extension <a
+                                href="https://accessibilityinsights.io/docs/en/web/overview"
+                                target="_blank">Accessibility Insights for Web</a> option "Tab stops" pour visualiser
+                            le chemin parcouru avec les tabulations.
+                        </div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label"><strong>Aucune page</strong> publique du site n'est
+                            <strong>exclue</strong> du moteur de <strong>recherche</strong>
+                        </div>
+                    </li>
+                </ul>
+                <div class="sep"></div>
+                <h2>Apparence et images</h2>
+                <ul class="checklist">
+                    <li class="checklist-item AA">
+                        <div class="checklist-item-label">Les <strong>contrastes</strong> fond/textes sont
+                            suffisants</div>
+                        <div class="text-small">Pour faire une vérification rapide du contraste entre une couleur de
+                            fond et une couleur de texte : <a href="https://contrast-ratio.com/"
+                                target="_blank">https://contrast-ratio.com/</a>.<br />À voir aussi l'application <a
+                                href="https://developer.paciellogroup.com/resources/contrastanalyser/"
+                                target="_blank">Colour Contrast Analyzer</a>, le site <a
+                                href="https://abc.useallfive.com/" target="_blank">Accessible Brand Colors</a>
+                            (calcul des contrastes de toutes les couleurs d'une charte en même temps), le site <a
+                                href="https://app.contrast-finder.org/?lang=fr" target="_blank">Contrast Finder</a>
+                            (propose des couleurs alternatives proches mais plus contrastées), l'outil <a
+                                href="https://accessconfig.a11y.fr/" target="_blank">AccessConfig</a> (switcher à
+                            mettre sur les sites dont les couleurs ne sont pas assez contrastées)</div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les éléments <strong>focus</strong> sont
+                            <strong>identifiables</strong> (si les styles par défaut ont été supprimés, ils doivent
+                            avoir été remplacés)
+                        </div>
+                        <xmp>input {
+                            outline: none;
+
+                            &:focus {
+                            border: 1px solid #000;
+                            }
+                            }</xmp>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Tous les <strong>textes</strong> font partie du
+                            <strong>html</strong> et ne sont pas incorporés à des images
+                        </div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>balises <code>img</code></strong> ont un
+                            <strong>attribut <code>alt</code></strong> contenant un texte <strong>pertinent</strong>
+                        </div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>balises <code>img</code> décoratives</strong>
+                            ont un <strong>attribut <code>alt</code> vide</strong></div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Les <strong>images <code>svg</code> décoratives</strong>
+                            ont un <strong>attribut <code>aria-hidden="true"</code></strong></div>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Les <strong>légendes</strong> et leurs images associées
+                            sont wrappées dans une balise <code>figure</code> ayant un attribut
+                            <code>role="group"</code>
+                        </div>
+                        <xmp>
+                            <figure role="group">
+                                <img src="/" alt="Chaton jouant dans son panier" />
+                                <figcaption>Un adorable chaton</figcaption>
+                            </figure>
+                        </xmp>
+                    </li>
+                    <li class="checklist-item A">
+                        <div class="checklist-item-label">Le site n’utilise <strong>pas de captcha</strong> (ou une
+                            alternative, audio par exemple, est proposée)</div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Le site est <strong>utilisable sans images et
+                                background</strong> :</div>
+                        <ul>
+                            <li>Les <strong>contrastes</strong> entre les textes et les couleurs de fonds remplaçant
+                                les background sont suffisants</li>
+                        </ul>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Tous les textes possèdent une <code>font-size</code> de
+                            <strong>minimum 10px</strong>
+                        </div>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="checklist-item-label">Aucune <strong>couleur</strong> sur le site n'est porteuse
+                            à elle seule d'une information</div>
+                        <div class="text-small">Ex : une bordure rouge sur un champ ne peut pas être le seul
+                            indicateur d'une erreur dans le formulaire, un message doit être ajouté</div>
+                    </li>
+                </ul>
+                <div class="sep"></div>
+                <h2>Pour aller plus loin...</h2>
+                <p>Outil de test permettant de faire ressortir rapidement les erreurs d’accessibilité : <a
+                        href="http://wave.webaim.org/" target="_blank">http://wave.webaim.org/</a><br /><span
+                        class="text-small">Les erreurs apparaissent de manière visuelle sur le site et sont aussi
+                        visibles dans un panel "code" à déployer en bas de page. Ne pas hésiter à naviguer dans les
+                        onglets "no style" et "contrast" pour faire ressortir des problèmes supplémentaires.</span>
+                </p>
+                <p>Extension pour tester l'accessibilité d'un site : <a
+                        href="https://accessibilityinsights.io/docs/en/web/overview" target="_blank">Accessibility
+                        Insights for Web</a></p>
+                <p>Liste complète des critères d'accessibilité : <a
+                        href="https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/"
+                        target="_blank">https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/</a><br /><span
+                        class="text-small">Possibilité de filtrer par niveau (A ou AA)</span></p>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- **********FOOTER********** -->
+    <footer role="contentinfo">
+
+    </footer>
+
+
+    <!-- **********JAVASCRIPT*********** -->
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
